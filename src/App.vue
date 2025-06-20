@@ -1,194 +1,57 @@
+// File: App.vue (VERSI FINAL YANG BENAR)
+
 <script setup>
-import PieChart from './components/PieChart.vue';
-import BarChart from './components/BarChart.vue';
-import HistoryTable from './components/HistoryTable.vue';
-import store from './store.js';
-import { exportToCSV } from './utils/exportToCSV.js'; // pastikan lo punya file ini
-import { onMounted } from 'vue';
-
-async function handleClearAll() {
-  const confirmation = confirm('⚠️ Yakin ingin menghapus semua data deteksi?');
-  if (!confirmation) return;
-
-  try {
-    await store.clearAllDetections();
-    alert('✅ Semua data berhasil dihapus!');
-  } catch (err) {
-    console.error('❌ Gagal menghapus data:', err);
-    alert('❌ Gagal menghapus data!');
-  }
-}
-
-function handleExport() {
-  const data = store.detections;
-
-  if (!data || data.length === 0) {
-    alert('⚠️ Tidak ada data deteksi untuk diekspor.');
-    return;
-  }
-
-  // 🔧 Ambil semua key unik dari objek-objek deteksi
-  const headersSet = new Set();
-  data.forEach(det => {
-    Object.keys(det).forEach(key => headersSet.add(key));
-  });
-  const headers = Array.from(headersSet);
-
-  // 🔄 Format data baris berdasarkan headers
-  const rows = data.map(det => {
-    const row = {};
-    headers.forEach(header => {
-      row[header] = det[header];
-    });
-    return row;
-  });
-
-  exportToCSV('detection_history', headers, rows);
-}
-
-onMounted(async() => {
-  await store.fetchDetectionsFromServer();
-})
-
+import TheHeader from './components/TheHeader.vue';
+import Dashboard from './views/Dashboard.vue';
 </script>
 
 <template>
-  <div>
-    <h1 class="dashboard-title">
-      Realtime Monitoring Dashboard
-    </h1>
+  <div class="app-wrapper">
+    <TheHeader />
 
-    <!-- Tombol -->
-    <div class="delete-container">
-      <button class="export-btn" @click="handleExport">
-        <i class="fas fa-file-export"></i>
-        Export Data
-      </button>
-      <button class="delete-all-btn" @click="handleClearAll">
-        <i class="fas fa-trash"></i>
-        Hapus Semua Deteksi
-      </button>
-    </div>
+    <Dashboard />
 
-    <div class="charts">
-      <section class="chart-card" id="bar-chart"> <!-- ✅ ID untuk BarChart -->
-        <h3 class="chart-title">Monitoring</h3>
-        <BarChart />
-      </section>
-
-      <section class="chart-card" id="pie-chart"> <!-- ✅ ID untuk PieChart -->
-        <h3 class="chart-title">Damage Class Percentage</h3>
-        <PieChart />
-      </section>
-    </div>
-
-    <section class="image-detail-card" id="detection-history"> <!-- ✅ ID untuk HistoryTable -->
-      <HistoryTable v-if="store.detections.length > 0" :detections="store.detections"/>
-    </section>
+    <footer>© 2025 YOLO Damage Identification System</footer>
   </div>
 </template>
 
-<style scoped>
-/* Gaya tetap sama seperti sebelumnya */
-.dashboard-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: #f8f9fa;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
+<style>
+/* STYLE GLOBAL (TANPA SCOPED) 
+  Ini adalah style dari <body> dan elemen luar lainnya dari index.html asli
+*/
+body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Background utama kita taruh di sini */
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  color: #f1f1f1;
 }
 
-.dashboard-title {
-  text-align: center;
-  color: #000102;
-  margin-bottom: 30px;
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-.delete-container {
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.export-btn {
-  background: linear-gradient(45deg, #00b894, #00cec9);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 190, 148, 0.3);
-  font-size: 0.9rem;
-  margin-right: 10px;
-}
-
-.export-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 190, 148, 0.4);
-}
-
-.delete-all-btn {
-  background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
-  font-size: 0.9rem;
-}
-
-.delete-all-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
-}
-
-.delete-all-btn i {
-  font-size: 1.1em;
-}
-
-.charts {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.chart-card {
-  flex: 1 1 45%;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* Class ini untuk meniru layout flexbox dari body lama
+*/
+.app-wrapper {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.chart-title {
-  color: #007bff;
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 1.25rem;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.image-detail-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+footer {
+  margin-top: 40px;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0.85;
 }
 </style>

@@ -1,0 +1,75 @@
+// File: src/components/TheHeader.vue (FINAL UNTUK POSISI TOMBOL)
+
+<script setup>
+// Script ini sudah benar, tidak perlu diubah
+import MasterControl from './DeviceControl.vue'; 
+</script>
+
+<template>
+  <nav class="navbar">
+    <div class="nav-brand">
+      YOLO WALL DAMAGE IDENTIFICATION
+    </div>
+    
+    <div class="nav-actions">
+      <MasterControl />
+      </div>
+  </nav>
+</template>
+
+<style scoped>
+/* ======================================================= */
+/* BAGIAN STYLE INI TIDAK PERLU DIUBAH SAMA SEKALI         */
+/* ======================================================= */
+.navbar {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between; /* <-- Ini akan otomatis mendorong Kiri dan Kanan */
+  align-items: center;
+  padding: 15px 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: scaleIn 1.1s ease-in-out;
+  gap: 20px;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, #00b4d8, #90e0ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  flex-shrink: 0;
+}
+
+/* Wrapper baru untuk semua tombol di kanan */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Media query untuk mode HP sudah benar */
+@media (max-width: 992px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .nav-brand {
+    text-align: center;
+    font-size: 1.3rem; 
+  }
+}
+</style>
