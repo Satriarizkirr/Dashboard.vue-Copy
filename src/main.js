@@ -1,3 +1,17 @@
+// src/main.js
+
+// Hanya daftarkan Service Worker saat di mode produksi (setelah 'npm run build')
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW PWA registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('SW PWA registration failed: ', registrationError);
+      });
+  });
+}
 import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./store";

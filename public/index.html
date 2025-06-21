@@ -2,36 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  
+  <link rel="manifest" href="/manifest.json" />
+
+  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOLO Wall Identification Dashboard</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #1d1e1f;
-      color: #f1ecec;
-    }
-    #app {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-  </style>
+
+  <meta name="theme-color" content="#1e293b" />
+  
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="YOLO Monitor">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+  <title>YOLO Wall Damage Identification</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div id="app"></div>
-
-  <!-- Built Vue application script -->
-<script type="module" src="/src/App.vue"></script>
-<script type="module" src="/src/main.js"></script>
-<script type="module" src="/src/store.js"></script>
-  <!-- 
-    Note:
-    - The div with id="app" is the mounting point for the Vue instance.
-    - The script src="/app.js" should point to the compiled Vue build output.
-    - Adjust the script path if your build output differs.
-  -->
+  
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

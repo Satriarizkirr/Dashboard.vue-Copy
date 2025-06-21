@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anda Sedang Offline</title>
+    <style>
+        /* CSS dibuat inline agar tidak ada request network tambahan */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #f8fafc;
+        }
+        p {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            fill: #334155;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,13.85 19.25,15.55 18.06,16.81L6.81,5.56C8.05,4.37 9.75,3.62 11.6,3.5L12,4M4,12A8,8 0 0,1 5.19,7.19L16.81,18.81A8,8 0 0,1 4,12Z" /></svg>
+        <h1>Koneksi Terputus</h1>
+        <p>
+            Maaf, aplikasi tidak dapat memuat data baru karena Anda sedang offline. Silakan periksa koneksi internet Anda.
+        </p>
+    </div>
+</body>
+</html>
