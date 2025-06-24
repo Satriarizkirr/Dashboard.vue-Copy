@@ -1,8 +1,5 @@
-// File: src/components/TheHeader.vue (FINAL UNTUK POSISI TOMBOL)
-
 <script setup>
-// Script ini sudah benar, tidak perlu diubah
-import MasterControl from './DeviceControl.vue'; 
+// TIDAK ADA LAGI IMPORT MASTER CONTROL DI SINI
 </script>
 
 <template>
@@ -11,16 +8,11 @@ import MasterControl from './DeviceControl.vue';
       YOLO WALL DAMAGE IDENTIFICATION
     </div>
     
-    <div class="nav-actions">
-      <MasterControl />
-      </div>
-  </nav>
+    </nav>
 </template>
 
 <style scoped>
-/* ======================================================= */
-/* BAGIAN STYLE INI TIDAK PERLU DIUBAH SAMA SEKALI         */
-/* ======================================================= */
+/* Bagian style .nav-actions yang sudah tidak terpakai juga dihapus */
 .navbar {
   width: 100%;
   max-width: 1200px;
@@ -30,7 +22,8 @@ import MasterControl from './DeviceControl.vue';
   border: 1px solid rgba(255, 255, 255, 0.15);
   margin-bottom: 30px;
   display: flex;
-  justify-content: space-between; /* <-- Ini akan otomatis mendorong Kiri dan Kanan */
+  /* Diubah agar brand selalu di tengah jika hanya ada satu item */
+  justify-content: center; 
   align-items: center;
   padding: 15px 25px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -52,14 +45,6 @@ import MasterControl from './DeviceControl.vue';
   flex-shrink: 0;
 }
 
-/* Wrapper baru untuk semua tombol di kanan */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Media query untuk mode HP sudah benar */
 @media (max-width: 992px) {
   .navbar {
     flex-direction: column;
