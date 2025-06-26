@@ -24,7 +24,7 @@ watch(() => store.logs.length, async () => { await nextTick(); if (logContainer.
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
   padding: 0px;
-  height: 120px;            /* <-- TINGGI PENDEK */
+  height: 60px;            /* <-- TINGGI PENDEK */
   max-width: 100%;           /* <-- LEBAR DIKECILKAN */
   margin-left: left;        /* <-- Agar ke tengah */
   margin-right: left;       /* <-- Agar ke tengah */

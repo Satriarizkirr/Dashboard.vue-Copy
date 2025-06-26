@@ -222,13 +222,13 @@ function formatDate(dateString) {
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 28vw;
+  max-height: 70vh;
 }
 
 .image-popup-content img {
   max-width: 100%;
-  max-height: 80vh; /* beri sedikit ruang untuk padding & tombol close */
+  max-height:70vh;/* beri sedikit ruang untuk padding & tombol close */
   display: block;
 }
 
@@ -241,7 +241,7 @@ function formatDate(dateString) {
   border: 2px solid #333;
   border-radius: 50%;
   width: 35px;
-  height: 35px;
+  height: 35;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;

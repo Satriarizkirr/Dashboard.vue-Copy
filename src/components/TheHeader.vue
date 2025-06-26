@@ -5,24 +5,23 @@
 <template>
   <nav class="navbar">
     <div class="nav-brand">
-      YOLO WALL DAMAGE IDENTIFICATION
+      YOLOV8 IDENTIFICATION SYSTEM
     </div>
     
     </nav>
 </template>
 
 <style scoped>
-/* Bagian style .nav-actions yang sudah tidak terpakai juga dihapus */
+
 .navbar {
   width: 100%;
   max-width: 1200px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.08);
   border-radius: 10px;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   margin-bottom: 30px;
   display: flex;
-  /* Diubah agar brand selalu di tengah jika hanya ada satu item */
   justify-content: center; 
   align-items: center;
   padding: 15px 25px;
@@ -38,7 +37,7 @@
 
 .nav-brand {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 3rem;
   background: linear-gradient(45deg, #00b4d8, #90e0ef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -101,9 +101,6 @@ onMounted(checkStatus);
   font-size: 1em;
 }
 
-/* ======================================================= */
-/* STYLE DINAMIS BERDASARKAN KONDISI                       */
-/* ======================================================= */
 
 /* Style untuk kondisi MATI (Tombol berwarna Abu-abu) */
 .off-state {
