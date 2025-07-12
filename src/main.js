@@ -18,12 +18,8 @@ import store from "./store";
 import BarChart from './components/BarChart.vue';
 import PieChart from "./components/PieChart.vue";
 import HistoryTable from "./components/HistoryTable.vue";
-
-// =======================================================
-// <<<<< INI DIA KUNCINYA, TAMBAHKAN SATU BARIS INI >>>>>
-// Baris ini akan "membangunkan" dan menjalankan file socket.js Anda
 import './socket.js';
-// =======================================================
+
 
 
 // Bungkus semuanya di dalam fungsi async

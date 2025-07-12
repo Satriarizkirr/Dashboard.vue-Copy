@@ -16,16 +16,24 @@ function handleExport() {
     alert('⚠️ Tidak ada data deteksi untuk diekspor.');
     return;
   }
+
+  // 1. Biarkan header dibuat seperti biasa
   const headersSet = new Set(data.flatMap(det => Object.keys(det)));
-  const headers = Array.from(headersSet);
+  let headers = Array.from(headersSet);
+
+  // 2. TAMBAHKAN BARIS INI: Filter header untuk membuang 'image_url'
+  const filteredHeaders = headers.filter(header => header !== 'imageurl');
+
+  // 3. Gunakan 'filteredHeaders' yang sudah bersih untuk membuat baris data
   const rows = data.map(det => {
     const row = {};
-    headers.forEach(header => {
+    filteredHeaders.forEach(header => { // <-- UBAH 'headers' menjadi 'filteredHeaders'
       row[header] = det[header] || '';
     });
     return row;
   });
-  exportToCSV('detection_history', headers, rows);
+
+  exportToCSV('detection_history', filteredHeaders, rows); 
 }
 async function handleClearAll() {
   const confirmation = confirm('⚠️ Yakin ingin menghapus semua data deteksi? Aksi ini tidak dapat dibatalkan.');
